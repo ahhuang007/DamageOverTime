@@ -1,0 +1,37 @@
+select t1.matchid, accountid,
+
+
+win,
+
+
+kills, deaths, assists,
+
+
+totalminionskilled,
+
+
+wardsplaced,
+
+
+totaldamagedealt,magicdamagedealt,physicaldamagedealt,truedamagedealt,damageselfmitigated,damagedealttoobjectives,damagedealttoturrets,
+
+
+totaldamagedealttochampions,magicdamagedealttochampions,physicaldamagedealttochampions,truedamagedealttochampions,totaldamagetaken,
+
+
+physicaldamagetaken,truedamagetaken,totalheal,
+
+
+t2.gameDuration/60, t2.matchRankScore, c.name as champName
+
+
+from match_player t1
+
+
+inner join (select * from match_list where queueid = 420 and badmatch = 0 limit 1000) t2
+
+  
+	on t1.matchId =t2.matchid
+
+
+left join champions c on t1.championId    = c.championid

@@ -1,0 +1,22 @@
+select t1.matchid,
+
+
+
+damageselfmitigated,
+
+totaldamagedealttochampions,totaldamagetaken,
+totalheal,
+
+t2.gameDuration/60, t2.matchRankScore, t2.gameVersion, c.name as champName
+
+
+from match_player t1
+
+
+inner join (select * from match_list where queueid = 420 and badmatch = 0 and gameDuration > 900 and mod(matchid, split_num) = snafu) t2
+
+  
+  on t1.matchId =t2.matchid
+
+
+left join champions c on t1.championId    = c.championid
